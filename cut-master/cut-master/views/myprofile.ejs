@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>3G3G</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="static/style_main.css" />
+
+    <link rel="shortcut icon" type="image/x-icon" href="static/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Outfit:wght@500;900&family=Raleway:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <style>
+      .gr {
+        display: flex;
+        justify-content: space-between;
+      }
+    </style>
+  </head>
+  <body>
+    <button onclick="topFunction()" id="myBtn" title="Go to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </button>
+
+    <header class="gr">
+      <p id="scores"></p>
+      <p class="username_hh">
+        <%=user.name%> <a href="/login" class="change2">Log out</a>
+      </p>
+    </header>
+
+    <div class="startoftheprofile">
+      <div class="leftside">
+        <img
+          src="<%=user.png_src%>"
+          class="photoofprof"
+          id="photo"
+          width="75%"
+          height="75%"
+        />
+        <div>
+          <label class="custom-file-upload">
+            <input type="file" id="upload-file" class="input_file" />
+            Upload
+          </label>
+          <button class="btn_for_photo" id="upload-btn" type="submit">
+            Фото
+          </button>
+          <p class="username_hh2">
+            <a href="/admin_page" class="change2" id="Go_Admin">Admin Page</a>
+          </p>
+          <span id="upload-text"></span>
+        </div>
+      </div>
+
+      <div class="rightside">
+        <p class="footer_second">
+          Hello, <%=user.name%>!<br />Welcome to your profile
+        </p>
+        <form id="form">
+          <div class="form-group">
+            <label for="exampleInputEmail1" class="ree">Username</label>
+            <input
+              type="text"
+              name="username"
+              class="form-control"
+              id="username"
+              placeholder="<%=user.name%>"
+              aria-describedby="emailHelp"
+            />
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1" class="ree">Email</label>
+            <input
+              name="email"
+              type="email"
+              class="form-control"
+              value="<%=user.email%>"
+              id="email"
+            />
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1" class="ree">City</label>
+            <input
+              name="text"
+              type="text"
+              class="form-control"
+              placeholder="<%=user.city%>"
+              id="city"
+            />
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1" class="ree">Password</label>
+            <input
+              name="password"
+              type="text"
+              class="form-control"
+              placeholder="<%=user.password%>"
+              id="password"
+            />
+          </div>
+          <br />
+          <br />
+          <button type="submit" class="btn btn-primary" formmethod="post">
+            Edit
+          </button>
+        </form>
+        <a href="/login" class="change2">Log out</a>
+      </div>
+    </div>
+
+    <div class="comp"></div>
+
+    <div class="games">
+      <div class="for_play_buttom">
+        <div class="images_for_play">
+          <a href="/tick-tack-toe">
+            <div class="buttom_img">
+              <img class="img_flex" src="static/T-T-T.png" alt="" />
+            </div>
+          </a>
+
+          <a href="/rock-paper-scissors">
+            <div class="buttom_img">
+              <img class="img_flex" src="static/R-P-S.png" alt="" />
+            </div>
+          </a>
+
+          <a href="/snake">
+            <div class="buttom_img">
+              <img class="img_flex" src="static/snake.png" alt="" />
+            </div>
+          </a>
+
+          <a href="/city">
+            <div class="buttom_img">
+              <img class="img_flex" src="static/city.png" alt="" />
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="Yandex">
+      <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/mExQ8bz3Gno"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+      <script
+        type="text/javascript"
+        charset="utf-8"
+        async
+        src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Aa687c32eefa7d49b777a8384a80469ad0fd7db58db326accb880ab009bf5c4db&amp;width=500&amp;height=400&amp;lang=ru_RU&amp;scroll=true"
+      ></script>
+    </div>
+    <footer class="footer_d">
+      <div class="footer-flex">
+        <div class="part1_footer">
+          <div class="container"><h1 class="footer_first">Avocado.</h1></div>
+          <div class="container">
+            <p class="footer_second">
+              Play with pleasure, <br />
+              because we poured all the soul.<br />
+              <span class="footer_nice"> keep it simple </span>
+            </p>
+          </div>
+
+          <div class="container">
+            <p class="all_rights">© 2024 Avocado. All rights reserved.</p>
+          </div>
+        </div>
+
+        <div class="part2_footer">
+          <a class="link_class" href="#">About us</a>
+          <a class="link_class" href="#">Support</a>
+          <a class="link_class" href="#">Privacy & Terms</a>
+          <a
+            class="link_class"
+            href="https://instagram.com/jntbk?utm_medium=copy_link"
+          >
+            Contact</a
+          >
+        </div>
+      </div>
+    </footer>
+    <script>
+      if ('<%=user.Role%>' === 'User') {
+        document.getElementById('Go_Admin').style.color = 'white';
+      }
+
+      document.getElementById('upload-btn').onclick = (event) => {
+        event.preventDefault();
+        const selectedFile_URL = window.URL.createObjectURL(
+          document.getElementById('upload-file').files[0]
+        );
+        document.getElementById('photo').src = selectedFile_URL;
+        console.log(selectedFile_URL);
+        const req = new XMLHttpRequest();
+        req.open('POST', 'http://localhost:3000/myprofile/update', true);
+        req.setRequestHeader('Content-Type', 'application/json');
+        req.send(
+          JSON.stringify({
+            png_src: selectedFile_URL,
+            email: '<%=user.email%>',
+          })
+        );
+        if (req.status === 200) {
+          console.log('ok');
+        } else {
+          console.log('error');
+        }
+      };
+
+      const scores = document.getElementById('scores');
+      const getAllScores = async () => {
+        const snake = await fetch('http://localhost:3000/score/snake');
+        const snake_json = await snake.json();
+
+        const ttt = await fetch('http://localhost:3000/score/ttt');
+        const ttt_json = await ttt.json();
+
+        const rps = await fetch('http://localhost:3000/score/rps');
+        const rps_json = await rps.json();
+
+        const p = `<p>Snake: ${snake_json.score} | Tick-Tack-Toe: ${ttt_json.wins} | Rock-Paper-Scissors: ${rps_json.wins}</p>`;
+        scores.innerHTML = p;
+      };
+      getAllScores();
+
+      document.getElementById('form').onclick = (e) => {
+        e.preventDefault();
+        const username = document.getElementById('username').value;
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const city = document.getElementById('city').value;
+        console.log({
+          name: username,
+          email: email,
+          password: password,
+          city: city,
+        });
+        const req = new XMLHttpRequest();
+        req.open('POST', 'http://localhost:3000/myprofile/update', true);
+        req.setRequestHeader('Content-Type', 'application/json');
+        req.send(
+          JSON.stringify({
+            name: username,
+            email: email,
+            password: password,
+            city: city,
+          })
+        );
+        if (req.status === 200) {
+          console.log('ok');
+        } else {
+          console.log('error');
+        }
+      };
+    </script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

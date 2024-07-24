@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+      integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
+      crossorigin="anonymous"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin page</title>
+    <link rel="icon" href="/static/logo.png" />
+    <link rel="stylesheet" href="static/style2.css" />
+  </head>
+
+  <body>
+    <div id="form-edit">
+      <div class="w-100 d-flex flex-column align-items-center">
+        <h1 class="rar">Admin page</h1>
+      </div>
+      <div class="container container-gray">
+        <table class="table table-gray">
+          <tr class="line">
+            <form>
+              <td>№</td>
+              <td>
+                <input
+                  type="text"
+                  name="namecreate"
+                  placeholder="Game (ttt, snk, rps)"
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  name="emailcreate"
+                  placeholder="Enter a link"
+                />
+              </td>
+              <td>
+                <input
+                  type="submit"
+                  formmethod="post"
+                  value="Add Video"
+                  class="change"
+                />
+              </td>
+              <td></td>
+            </form>
+          </tr>
+        </table>
+        <table class="table table-gray">
+          <thead>
+            <tr>
+              <th scope="col">№</th>
+              <th scope="col">Game</th>
+              <th scope="col">Link</th>
+              <th scope="col">Delete</th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="flex_a">
+      <a href="/admin_page" class="link_cl"> Users</a>
+    </div>
+    <script>
+      fetchData();
+      function addVideo(e) {
+        e.preventDefault();
+        const req = fetch('/admin_page/videos', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name: document.querySelector("input[name='namecreate']").value,
+            link: document.querySelector("input[name='emailcreate']").value,
+          }),
+        });
+        fetchData();
+      }
+      document.querySelector('form').addEventListener('submit', addVideo);
+      async function fetchData() {
+        const req = await fetch('/admin_page/videos/all');
+        const data = await req.json();
+        let output = '';
+        for (let i = 0; i < data.length; i++) {
+          output += `<tr><th scope="row">${i}</th><td><div contenteditable>${data[i].game}</div></td><td><div contenteditable>${data[i].link}</div></td><td><button class="btn btn-danger" method="post"><a class="text-white" href="/admin_page/videos/del?id=${data[i]._id}">delete</a></button></td> `;
+        }
+        console.log(output);
+        document.getElementById('tbody').innerHTML = output;
+      }
+    </script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

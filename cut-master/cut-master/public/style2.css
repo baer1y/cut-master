@@ -1,0 +1,12 @@
+.flex_a{
+    display: flex;
+    justify-content: left;
+}
+.link_cl{
+    color: black;
+    text-decoration: none;
+}
+.link_cl:hover{
+    color: #0e53a8;
+    text-decoration: none;
+}

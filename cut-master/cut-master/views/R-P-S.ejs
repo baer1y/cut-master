@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>3G3G-R-P-S</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="R-P-S.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Outfit:wght@500;900&family=Raleway:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <button onclick="topFunction()" id="myBtn" title="Go to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </button>
+
+    <% if (!isAuth) { %>
+    <header>
+      <a class="register" href="/signup">Register</a>
+      <a class="login" href="/login"> Login</a>
+    </header>
+    <% } else { %>
+    <header>
+      <a class="register" href="/myprofile">Profile</a>
+    </header>
+    <% } %>
+
+    <section class="start">
+      <div class="slider">
+        <img src="R-P-S.png" width="100%" />
+      </div>
+
+      <div class="text">
+        <div class="text_1">
+          <p class="h_1">Avocado.</p>
+          <p class="h_2">a game made by bakhtiyar</p>
+          <p class="grad">ROCK-PAPER-SCISSORS</p>
+          <div class="gradient"></div>
+        </div>
+        <div class="text_2">
+          <p>
+            These games are not intended for children under 6 years of age,
+            also, seriously, who reads all this? I just wanna tell you how I'm
+            feeling Gotta make you understandNever gonna give you up Never gonna
+            let you down
+          </p>
+        </div>
+        <a class="play_ff" href="#game_ee">
+          <button class="play">Let's play</button>
+        </a>
+      </div>
+    </section>
+
+    <div class="comp"></div>
+
+    <section class="game" id="game_ee">
+      <!--Display Score of player and computer -->
+      <div class="score">
+        <div class="playerScore">
+          <p class="pscore">PLAYER</p>
+          <p class="p-count count">0</p>
+        </div>
+        <div class="computerScore">
+          <p class="cscore">COMPUTER</p>
+          <p class="c-count count">0</p>
+        </div>
+      </div>
+
+      <div class="move">CHOOSE YOUR MOVE</div>
+
+      <!--Number of moves left before game ends -->
+      <div class="movesleft">MOVES LEFT: 5</div>
+
+      <!--Options available to player to play game -->
+      <div class="options">
+        <button class="rock">Rock</button>
+        <button class="paper">Paper</button>
+        <button class="scissor">Scissors</button>
+      </div>
+
+      <!--Final result of game -->
+      <div class="result"></div>
+
+      <!--Reload the game -->
+      <button class="reload"></button>
+      <div class="score" id="score"></div>
+    </section>
+    <div class="videos">
+    <iframe
+      width="560"
+      height="315"
+      src="<%= video.link %>"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+    <iframe
+      width="560"
+      height="315"
+      src="<%= video2.link %>"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+    </div>
+
+    <div class="empty"></div>
+
+    <footer class="footer_d">
+      <div class="footer-flex">
+        <div class="part1_footer">
+          <div class="container"><h1 class="footer_first">Avocado.</h1></div>
+          <div class="container">
+            <p class="footer_second">
+              Play with pleasure, <br />
+              because we poured all the soul.<br />
+              <span class="footer_nice"> keep it simple </span>
+            </p>
+          </div>
+
+          <div class="container">
+            <p class="all_rights">© 2024 Avocado. All rights reserved.</p>
+          </div>
+        </div>
+
+        <div class="part2_footer">
+          <a class="link_class" href="https://instagram.com/jntbk?utm_medium=copy_link">About us</a>
+          <a class="link_class" href="https://instagram.com/jntbk?utm_medium=copy_link">Support</a>
+          <a class="link_class" href="https://instagram.com/jntbk?utm_medium=copy_link">Privacy & Terms</a>
+          <a
+            class="link_class"
+            href="https://instagram.com/jntbk?utm_medium=copy_link"
+          >
+            Contact</a
+          >
+        </div>
+      </div>
+    </footer>
+    <script src="static/sri_script.js"></script>
+    <script>
+      const getScore = async () => {
+        const res = await fetch('http://localhost:3000/score/rps');
+        const data = await res.json();
+        const scoreTag = document.getElementById('score');
+        console.log(data);
+        scoreTag.innerHTML = `<p>user: ${data.user} wins: ${data.wins} losses: ${data.losses}</p>`;
+      };
+      getScore();
+      async function end(res) {
+        console.log(res);
+        await fetch('http://localhost:3000/rps', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            result: res,
+          }),
+        });
+      }
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
